@@ -1,25 +1,54 @@
 import java.util.Scanner;
 
 public class Problem1 {
-    static class Calculator {
-        double calculate(double a, double b, String op) {
-            switch (op.toLowerCase()) {
-                case "add": return a + b;
-                case "subtract": return a - b;
-                case "multiply": return a * b;
-                case "divide":
-                    if (b == 0) throw new ArithmeticException("Division by zero");
-                    return a / b;
-                default: throw new IllegalArgumentException("Invalid operation: " + op);
-            }
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        if (!sc.hasNextDouble()) {
+            System.out.println("Invalid input. Please enter a number.");
+            return;
+        }
         double a = sc.nextDouble();
-        double b = sc.nextDouble();
+
+        System.out.print("Enter operator (+, -, *, /): ");
+        if (!sc.hasNext()) {
+            System.out.println("No operator entered.");
+            return;
+        }
         String op = sc.next();
-        System.out.println(new Calculator().calculate(a, b, op));
+
+        System.out.print("Enter second number: ");
+        if (!sc.hasNextDouble()) {
+            System.out.println("Invalid input. Please enter a number.");
+            return;
+        }
+        double b = sc.nextDouble();
+
+        double result;
+
+        switch (op) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                if (b == 0) {
+                    System.out.println("Error: Division by zero");
+                    return;
+                }
+                result = a / b;
+                break;
+            default:
+                System.out.println("Invalid operator");
+                return;
+        }
+
+        System.out.println("Result: " + result);
     }
 }
