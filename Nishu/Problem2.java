@@ -13,5 +13,7 @@ public class Problem2 {
             sb.append(val);
         }
         System.out.println(sb.toString());
+        
+        sc.close(); 
     }
 }
