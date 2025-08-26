@@ -3,9 +3,18 @@ import java.util.Scanner;
 public class Problem3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();   
+        
+        if (!sc.hasNextInt()) {
+            System.out.println("Please enter a valid integer.");
+            return;
+        }
+        
+        int a = sc.nextInt();
 
-        if (a <= 0) return;
+        if (a <= 0) {
+            System.out.println("No odd numbers.");
+            return;
+        }
 
         int limit = (a % 2 == 0) ? a - 1 : a;  
         StringBuilder sb = new StringBuilder();
